@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="2019211001000904gaochong:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>2019211001000904gaochong</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="gaochong2019211001000904-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="2019211001000904gaochong:war exploded" />
+    </root>
+  </artifact>
+</component>
