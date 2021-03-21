@@ -8,6 +8,11 @@
         <servlet-name>anyName</servlet-name><!-- give any name -->
         <servlet-class>com.gaochong.week2.demo.HelloWorldServlet</servlet-class><!--package +name of servlet class -->
     </servlet>
+    <!--automatic code-->
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.gaochong.week3.demo.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>anyName</servlet-name>
         <url-pattern>/hello</url-pattern><!-- url must start with / -->
@@ -15,4 +20,8 @@
     <!-- x= 5, a= x so we can say a=5
     so /hello==HelloWorldServlet
     -->
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register1</url-pattern><!--write this url in action -->
+    </servlet-mapping>
 </web-app>
