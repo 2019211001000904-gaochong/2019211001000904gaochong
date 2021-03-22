@@ -22,6 +22,6 @@
     -->
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register1</url-pattern><!--write this url in action -->
+        <url-pattern>/register</url-pattern><!--write this url in action -->
     </servlet-mapping>
 </web-app>
