@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>register1</title>
+    <title>register</title>
 </head>
 <body>
-<form method="post" action="register1"><!-- within doPost() in servlet-->
+<form method="post" action="register"><!-- within doPost() in servlet-->
     username<input type="text" name="username"/><br/>
     password<input type="password" name="password"/><br/>
     Email<input type="text" name="email"/><br/>
