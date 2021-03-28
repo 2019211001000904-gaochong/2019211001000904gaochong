@@ -12,14 +12,42 @@
 </head>
 <body>
 <form method="post" action="register"><!-- within doPost() in servlet-->
-    username<input type="text" name="username"/><br/>
-    password<input type="password" name="password"/><br/>
-    Email<input type="text" name="email"/><br/>
-    Gender: <input type="radio" name="gender" value="male">Male<input type="radio" name="gender" value="female">Female<br/>
-    <!-- if name is same it make array -->
-    Date of Birth :<input type="text" name="birthDate"><br/>
-    <input type="submit" value="Register"/>
+    <h>New User Registration</h>
+    <table>
+        <tr>
+            <td>username</td>
+            <td><input type="text" name="username"/></td>
+        </tr>
+        <tr>
+            <td>password</td>
+            <td><input type="password" name="password"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email"/></td>
+        </tr>
+        <tr>
+            <td><b>Gender</b></td>
+            <td><input type="radio" name="gender" value="male">Male<input type="radio" name="gender" value="female">Female</td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td><input type="text" name="birthDate"></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Register"/>
+            </td>
+        </tr>
+    </table>
 </form>
 
 </body>
 </html>
+<%--username<input type="text" name="username"/><br/>
+password<input type="password" name="password"/><br/>
+Email<input type="text" name="email"/><br/>
+Gender: <input type="radio" name="gender" value="male">Male<input type="radio" name="gender" value="female">Female<br/>
+<!-- if name is same it make array -->
+Date of Birth :<input type="text" name="birthDate"><br/>
+<input type="submit" value="Register"/>--%>
