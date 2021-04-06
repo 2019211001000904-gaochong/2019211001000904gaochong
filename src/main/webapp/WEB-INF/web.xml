@@ -32,5 +32,12 @@
     </servlet-mapping>
 
     <!--lifeCycleServlet-->
-
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.gaochong.week5.demo.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 </web-app>
