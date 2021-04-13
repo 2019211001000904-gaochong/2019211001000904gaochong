@@ -12,6 +12,12 @@
     <b>
     Login
     </b>
+    <%
+        if(request.getAttribute("message")==null){
+            //error
+            out.println(request.getAttribute("message"));
+        }
+    %>
 </p>
     username<input type="text" name="username"><br/>
     password<input type="password" name="password"><br/>

@@ -7,12 +7,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(name = "RegisterServlet", value = "/RegisterServlet")
+@WebServlet(name = "RegisterServlet", value = "/register")
 public class RegisterServlet extends HttpServlet {
-    public Connection con;
+     Connection con=null;
 
     public void init() throws ServletException{
-        String driver = getServletContext().getInitParameter("driver");
+/*        String driver = getServletContext().getInitParameter("driver");
         String url = getServletContext().getInitParameter("url");
         String username = getServletContext().getInitParameter("username");
         String password = getServletContext().getInitParameter("password");
@@ -22,64 +22,61 @@ public class RegisterServlet extends HttpServlet {
             con = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-        }
+        }*/
+        con=(Connection) getServletContext().getAttribute("con");
+        System.out.println(con);
 
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        String gender = request.getParameter("gender");
-        String birthDate = request.getParameter("birthDate");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            String gender = request.getParameter("gender");
+            String birthdate = request.getParameter("birthdate");
+            PrintWriter out = response.getWriter();
+            try {
+                Statement st = con.createStatement();
+                String insertDb = "insert into userdb.dbo.usertable(username,password,email,gender,birthdate)" + "values('"+username+"','"+password+"','"+email+"','"+gender+"','"+birthdate+"')";
+                System.out.println("insertDb"+insertDb);
+                int n =st.executeUpdate(insertDb);
+                System.out.println("n-->"+n);//==1 success --insert
+               // String selectDb = "select id,username,password,email,gender,birthdate from userdb.dbo.usertable";
+               // ResultSet rs = st.executeQuery(selectDb);
+              /*  out.println("<html><title></title><body><table border=1><tr>");
+                out.println("<td>Username</td><td>Password</td><td>Email</td><td>Gender</td><td>Birthday</td><tr/>");
+                while(rs.next()) {
+                    out.println("<tr>");
+                    out.println("<td>" + rs.getString("username") + "</td>");
+                    out.println("<td>" + rs.getString("password") + "</td>");
+                    out.println("<td>" + rs.getString("email") + "</td>");
+                    out.println("<td>" + rs.getString("gender") + "</td>");
+                    out.println("<td>" + rs.getString("birthdate") + "</td>");
+                    out.println("</tr>");
+                }
+                out.println("</table></body></html>");*/
+                //use request attribute
+                //set rs into request attribute
+               /* request.setAttribute("rsname",rs);//name -string , value - any type (object)
 
-        PrintWriter writer = response.getWriter();
-        try {
+                request.getRequestDispatcher("userList.jsp").forward(request,response);//at this point request given to userList
+                //no more here
+                System.out.println("i am RegisterServlet -->doPost()--> after forward()");//no see this line*/
 
-            System.out.println("con:"+con);
-            Statement createDbStatement = con.createStatement();
-            String insertDb = "insert into usertable(username,password,email,gender,birthDate) values('"+username+"','"+password+"','"+email+"','"+gender+"','"+birthDate+"')";
-            createDbStatement.executeUpdate(insertDb);
-            String selectDb = "select * from usertable";
-            ResultSet rs = createDbStatement.executeQuery(selectDb);
-            while(rs.next()) {
-                rs.getString("id");
-                rs.getString("userName");
-                rs.getString("password");
-                rs.getString("email");
-                rs.getString("gender");
-                rs.getString("birthDate");
+                //ok -done
+                //after register a new user - user can login
+                response.sendRedirect("login.jsp");
+            } catch (Exception e) {
+                System.out.println(e);
             }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+            out.println("</table>");
 
-        writer.println(
-                "<table border=\"1\">"       +
-                        "<tr>"                   +
-                        "<td>id</td>"        +
-                        "<td>userName</td>"  +
-                        "<td>password</td>"  +
-                        "<td>email</td>"     +
-                        "<td>gender</td>"    +
-                        "<td>birthDate</td>" +
-                        "</tr>"    +
-                        "<tr>"     +
-                        "<td>" + id        + "</td>" +
-                        "<td>" + username  + "</td>" +
-                        "<td>" + password  + "</td>" +
-                        "<td>" + email     + "</td>" +
-                        "<td>" + gender    + "</td>" +
-                        "<td>" + birthDate + "</td>" +
-                        "</tr>"    +
-                        "</table>");
-    }
+        }
 
 
 
