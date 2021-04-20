@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -103,18 +104,18 @@ public class UserDao implements IUserDao{
         String sql = "select * from usertable where username= ?";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1,username);
-        ResultSet rs=st.executeQuery();
+        ResultSet rs= st.executeQuery();
         User user=null;
         if (rs.next()) {
-            user = new User();
+            user=new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
-            user.setBirthdate(rs.getDate("birthDate"));
+            user.setBirthdate(rs.getDate("birthdate"));
         }
-        return (List<User>) user;
+        return Collections.singletonList(user);
     }
 
     @Override
@@ -123,18 +124,18 @@ public class UserDao implements IUserDao{
         String sql = "select * from usertable where password= ?";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1,password);
-        ResultSet rs=st.executeQuery();
+        ResultSet rs= st.executeQuery();
         User user=null;
         if (rs.next()) {
-            user = new User();
+            user=new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
-            user.setBirthdate(rs.getDate("birthDate"));
+            user.setBirthdate(rs.getDate("birthdate"));
         }
-        return (List<User>) user;
+        return Collections.singletonList(user);
     }
 
     @Override
@@ -143,18 +144,18 @@ public class UserDao implements IUserDao{
         String sql = "select * from usertable where email= ?";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1,email);
-        ResultSet rs=st.executeQuery();
+        ResultSet rs= st.executeQuery();
         User user=null;
         if (rs.next()) {
-            user = new User();
+            user=new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
-            user.setBirthdate(rs.getDate("birthDate"));
+            user.setBirthdate(rs.getDate("birthdate"));
         }
-        return (List<User>) user;
+        return Collections.singletonList(user);
     }
 
     @Override
@@ -163,18 +164,18 @@ public class UserDao implements IUserDao{
         String sql = "select * from usertable where gender= ?";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1,gender);
-        ResultSet rs=st.executeQuery();
+        ResultSet rs= st.executeQuery();
         User user=null;
         if (rs.next()) {
-            user = new User();
+            user=new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
-            user.setBirthdate(rs.getDate("birthDate"));
+            user.setBirthdate(rs.getDate("birthdate"));
         }
-        return (List<User>) user;
+        return Collections.singletonList(user);
     }
 
     @Override
@@ -183,18 +184,18 @@ public class UserDao implements IUserDao{
         String sql = "select * from usertable where birthDate= ?";
         PreparedStatement st=con.prepareStatement(sql);
         st.setString(1, String.valueOf(birthDate));
-        ResultSet rs=st.executeQuery();
+        ResultSet rs= st.executeQuery();
         User user=null;
         if (rs.next()) {
-            user = new User();
+            user=new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
-            user.setBirthdate(rs.getDate("birthDate"));
+            user.setBirthdate(rs.getDate("birthdate"));
         }
-        return (List<User>) user;
+        return Collections.singletonList(user);
     }
 
     @Override
@@ -202,17 +203,17 @@ public class UserDao implements IUserDao{
         //select * from usertable----- write jdbc code yourself --
         String sql = "select * from usertable ";
         PreparedStatement st=con.prepareStatement(sql);
-        ResultSet rs=st.executeQuery();
+        ResultSet rs= st.executeQuery();
         User user=null;
         if (rs.next()) {
-            user = new User();
+            user=new User();
             user.setId(rs.getInt("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             user.setEmail(rs.getString("email"));
             user.setGender(rs.getString("gender"));
-            user.setBirthdate(rs.getDate("birthDate"));
+            user.setBirthdate(rs.getDate("birthdate"));
         }
-        return (List<User>) user;
+        return Collections.singletonList(user);
     }
 }
