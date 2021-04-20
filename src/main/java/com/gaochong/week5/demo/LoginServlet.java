@@ -1,5 +1,7 @@
 package com.gaochong.week5.demo;
 
+import com.gaochong.dao.UserDao;
+import com.gaochong.model.User;
 import com.microsoft.sqlserver.jdbc.ISQLServerConnection;
 
 import javax.servlet.*;
@@ -26,13 +28,16 @@ public class LoginServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }*/
+        super.init();
         con=(Connection) getServletContext().getAttribute("con");
 
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);// call dopost
+        //doPost(request,response);// call dopost
+//when use click menu LOGIN-request is get
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);//check jsp
     }
 
     @Override
@@ -41,7 +46,21 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         PrintWriter writer = response.getWriter();
+        UserDao userDao=new UserDao();
         try {
+            User user=userDao.findByUsernamePassword(con,username,password);
+            if(user!=null){
+                //
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            }else {
+                request.setAttribute("message","Username or Password Error!!!");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+/*        try {
             Statement createDbStatement = con.createStatement();//用连接connection，创建Statement对象createDbStatement，指定结果集可以滚动，并且以只读方式读取数据库。
             String selectDb = "select * from usertable where username='"+username+"' and password='"+password+"'";
             ResultSet rs = createDbStatement.executeQuery(selectDb);
@@ -63,7 +82,7 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (Exception e) {
             System.out.println(e);
-        }
+        }*/
 
     }
 }
