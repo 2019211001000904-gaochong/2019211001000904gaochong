@@ -8,6 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
 <h1>User Info</h1>
+<%
+    //read cookies
+    Cookie[] allCookie=request.getCookies();//all cookies in array
+    for (Cookie c:allCookie){
+        //get one by one
+        out.println("<br/>"+c.getName()+" == "+c.getValue());
+    }
+%>
 <table>
 
     <tr><td>Username:</td><td><%=request.getAttribute("username")%></td></tr>

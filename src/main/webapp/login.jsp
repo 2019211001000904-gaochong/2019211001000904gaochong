@@ -13,7 +13,7 @@
     Login
     </b>
     <%
-        if(request.getAttribute("message")==null){
+        if(request.getAttribute("message")!=null){
             //error
             out.println(request.getAttribute("message"));
         }

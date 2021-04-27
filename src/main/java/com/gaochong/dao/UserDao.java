@@ -53,6 +53,7 @@ public class UserDao implements IUserDao{
         st.setString(3, user.getEmail());
         st.setString(4, user.getGender());
         st.setString(5, String.valueOf(user.getBirthdate()));
+        st.setInt(6, user.getId());
         return st.executeUpdate();
     }
 
