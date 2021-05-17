@@ -36,8 +36,11 @@ public class JDBCServletContextListener implements ServletContextListener {
             //when this method called -- tomcat stop
             System.out.println("i m in contextDestroyed()");
             try {
-                con.close();
-                sce.getServletContext().removeAttribute("con");
+                if (con != null){
+                    con.close();
+                    sce.getServletContext().removeAttribute("con");
+
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }

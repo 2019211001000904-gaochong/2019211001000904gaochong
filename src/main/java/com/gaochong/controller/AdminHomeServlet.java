@@ -12,8 +12,10 @@ public class AdminHomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session=request.getSession(false);//return session or null (no session) but its not create a new session
+        System.out.println(session);
         if(session!=null&&session.getAttribute("user")!=null) {
             User user = (User) session.getAttribute("user");
+            System.out.println(user);
             if ("admin".equals(user.getUsername())) {//admin username must be in table
                 request.getRequestDispatcher("../WEB-INF/views/admin/index.jsp").forward(request, response);
             } else {
@@ -27,10 +29,11 @@ public class AdminHomeServlet extends HttpServlet {
                 //no session -then user click the link
                 request.setAttribute("message","Please login as admin!!!");
                 request.getRequestDispatcher("../WEB-INF/views/login.jsp").forward(request,response);
+                    System.out.println("ok");
             }
         }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 }
