@@ -73,6 +73,7 @@ public class Category {
             c.setCategoryId(rs.getInt(1));
             c.setCategoryName(rs.getString(2));
             c.setDescription(rs.getString(3));
+            c.setActive(rs.getBoolean(4));
             list.add(c);
         }
         return list;
@@ -83,8 +84,8 @@ public class Category {
         pt.setInt(1,categoryId);
         ResultSet rs=pt.executeQuery();
         String categoryName=null;
-        while (rs.next()){
-            categoryName=rs.getString("categoryName");
+        if (rs.next()){
+            categoryName=rs.getString("CategoryName");
         }
         return categoryName;
     }
