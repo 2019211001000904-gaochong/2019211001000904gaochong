@@ -1,27 +1,25 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Gc
-  Date: 2021/4/25
-  Time: 22:16
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.gaochong.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>updateUser</title>
+</head>
+<body>
 <%@include file="header.jsp"%>
-<h1> User Update</h1>
-<!--need form -->
+<h1>User Update</h1>
 <%
-    //get user from session
-    User u1=(User) session.getAttribute("user");
+    User u = (User) session.getAttribute("user");
 %>
-<form method="post" action="updateUser"><!-- within doPost() in servlet-->
-    <input type="hidden" name="id" value="<%=u1.getId()%>">
-    username<input type="text" name="username" value="<%=u1.getUsername()%>"/><br/>
-    password<input type="password" name="password" value="<%=u1.getPassword()%>"/><br/>
-    Email<input type="text" name="email" value="<%=u1.getEmail()%>"/><br/>
-    Gender: <input type="radio" name="gender" value="male" <%="male".equals(u1.getGender())?"checked" :""%>>Male
-    <input type="radio" name="gender" value="female" <%="female".equals(u1.getGender())?"checked" :""%>>Female<br/>
-    <!-- if name is same it make array -->
-    Date of Birth :<input type="text" name="birthdate" value="<%=u1.getBirthdate()%>"><br/>
-    <input type="submit" value="Save Changes"/>
+<form method="post" action="updateUser">
+    <input type="hidden" name="id" value="<%=u.getId()%>">
+    username:<input type="text" name="username" value="<%=u.getUsername()%>"><br>
+    password:<input type="password" name="password" value="<%=u.getPassword()%>"><br>
+    Email:<input type="text" name="email" value="<%=u.getEmail()%>"><br>
+    Gender:<input type="radio" name="gender" value="male" <%= "male".equals(u.getGender()) ? "checked" : ""%>>Male
+    <input type="radio" name="gender" value="female" <%= "female".equals(u.getGender()) ? "checked" : ""%>>Female<br>
+    Date of Birth:<input type="date" name="birthDate" value="<%=u.getBirthdate()%>"><br>
+    <input type="submit" value="Save Changes">
 </form>
 <%@include file="footer.jsp"%>
+</body>
+</html>
