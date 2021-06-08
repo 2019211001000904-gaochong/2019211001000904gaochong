@@ -6,11 +6,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 public class UserDao implements IUserDao{
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     public boolean saveUser(Connection con, User user) throws SQLException {
@@ -52,7 +54,7 @@ public class UserDao implements IUserDao{
         st.setString(2, user.getPassword());
         st.setString(3, user.getEmail());
         st.setString(4, user.getGender());
-        st.setString(5, String.valueOf(user.getBirthdate()));
+        st.setString(5,dateFormat.format(user.getBirthdate()));
         st.setInt(6, user.getId());
         return st.executeUpdate();
     }
