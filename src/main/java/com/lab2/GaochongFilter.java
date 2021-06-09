@@ -2,7 +2,7 @@ package com.lab2;
 
 import javax.servlet.*;
 import java.io.IOException;
-
+//lab-2
 public class GaochongFilter implements Filter {
     public void destroy() {
     }

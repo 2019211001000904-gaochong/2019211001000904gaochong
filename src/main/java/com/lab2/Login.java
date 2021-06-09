@@ -4,7 +4,7 @@ package com.lab2;
 public class Login {
     private String username;
     private String password;
-
+//lab-2
     public String getUsername() {
         return username;
     }
